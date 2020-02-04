@@ -1,0 +1,36 @@
+.container{
+    display: grid;
+    justify-content: center;
+}
+h1{
+    margin: 0 auto;
+    font-size: 250%;
+}
+input{
+    background-color: azure;
+}
+button{
+    background-color: lightskyblue;
+    border-radius: 2em;
+}
+.row{
+    margin: 0 auto;
+    border: 2px solid blue;
+}
+#playerGame{
+    display: flex;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+}
+.box{
+    width: 200px;
+    height: 150px;
+    margin: 2%;
+    border: 2px solid black;
+}
+.playerBox{
+    justify-content: space-evenly;
+}
+ul{
+    justify-content: space-evenly;
+}
