@@ -15,8 +15,8 @@
         <div class="container">
             <h1>Rock Paper Scissors</h1>
             <div class="row">
-                <input type="text" name="fname" placeholder="Name">
-                <button>Start</button>
+                <input id="userName" type="text" name="fname" placeholder="Name">
+                <button id="start">Start</button>
             </div>
             <div class="row" id="playerStatus"></div>
             <div class="row" id="playerGame">
@@ -35,6 +35,11 @@
                         <li>Loses: <span></span></li>
                     </ul>
                 </div>
+            </div>
+            <div class="row" id="dialog">
+                <div id="dialogBox"></div>
+                <input type="text" id="userComment">
+                <button id="submit">Submit</button>
             </div>
        </div>
         <script src="app.js"></script>
