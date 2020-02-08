@@ -5,9 +5,9 @@ Rock, paper, scissors multiplayer game using firebase.
 
 * Create a game that suits this user story:
 
-* Player input box (only 2)
-    - with start button
-    - initial text: Waiting for Player 1/2
+* Player input box (only 2) 
+    - with start button √
+    - initial text: Waiting for Player 1/2 √
     - change initial text with user input
     - hide input box & start button with "Hi, user name!"
     - after 2 players show
@@ -17,13 +17,13 @@ Rock, paper, scissors multiplayer game using firebase.
 
 * 3 boxes
   * 2 boxes (Only two users can play at the same time.) 
-    - position of boxes start & end
+    - position of boxes start & end √
     - add user names to top of box
     - highlights box to indicate player turn
         -add no border button userGuess in middle (clickable)
         -shows for player 1 after player 2 enters
         -shows for player 2 after player 1 chooses
-    - bottom of box lists Wins, losses, and ties
+    - bottom of box lists Wins, losses, and ties √
     - after user choices
         - show user choice in middle text
         - change # of wins/ losses/ ties
