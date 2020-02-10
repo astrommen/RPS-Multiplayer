@@ -17,77 +17,40 @@ $(document).ready(function() {
     // Initializing var to ref the database
     var database = firebase.database();
 
+    // Initial Values
+    var playerName = " ";
+    var playerComment = " ";
+	$("span").text("0");
+
     // All of our connections will be stored in this directory.
     var connectionsRef = database.ref("/connections");
 
     // '.info/connected' is a boolean value, true if the client is connected and false if they are not.
     var connectedRef = database.ref(".info/connected");
-
-    // When the client's connection state changes...
-    connectedRef.on("value", function(snap) {
-
-        // If they are connected..
-        if (snap.val()) {
     
-        // Add user to the connections list.
-        var con = connectionsRef.push(true);
-        
-        // Remove user from the connection list when they disconnect.
-        con.onDisconnect().remove();
-        
-        }
-    });
-    
-    // Initial Values
-    var player1 = "Waiting on Player 1...";
-    var player2 = "Waiting on Player 2...";
-    $("span").text("0");
-    var name = "No one here..."
-    var comment = "";
+    // when user clicks the start, function will run
+	$("#start").on("click", function(event) {
+		event.preventDefault();
+		
+        // var will grab value from top input box
+		playerName = $("#userName").val().trim();
+	
+		// When the client's connection state changes...
+		connectedRef.on("value", function(snap) {
 
-    // Initializing var to grab display val
-    var user1 = $("#user1-display");
-    var user2 = $("#user2-display");
-    //setting input val to default vals
-    user1.text(player1);
-    user2.text(player2);
-    console.log(user1.text());//ftp only
-    
-    // Initializing Game
-    $(document).on("click", "#start", function(){
+			// If they are connected..
+			if (snap.val()) {
 
-        //grabbing input val from userName
-        var Name = $("#userName").val();
+			// Add user to the connections list.
+			var con = connectionsRef.push({
+				//pushes new key/value pair for EACH connection
+                user: playerName,
+			});
 
-        //if both users have default val
-        if (user1.text() === player1 && user2.text() === player2){
-            
-            //then change user1 to name
-            user1.text(Name); 
+			// Remove user from the connection list when they disconnect.
+			con.onDisconnect().remove();
 
-          // if user1 does not have default  
-        } else if (user1.text() !== player1 && user2.text() === player2){
-
-            //then change user2 to name
-            user2.text(Name);
-
-        } else {
-            alert("Game is full, please try again later!");
-        }
-    });
-
-    //Game Play
-    if ((user1.text() !== player1) && (user2.text() !== player2)) {
-        var userChoice = ["Rock", "Paper", "Scissors"];
-        console.log(userChoice);
-
-        userChoice.forEach(element => {
-            console.log(element);
-            var choiceBtns = $("<button>");
-            console.log(choiceBtns);
-            choiceBtns.attr("value", [element]);
-            $("#user1-display").append(choiceBtns);
-
-        });
-    }
+			}
+		});
+    });	
 });
