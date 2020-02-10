@@ -52,5 +52,27 @@ $(document).ready(function() {
 
 			}
 		});
-    });	
-});
+    });	// grabbing the snapshot value of connectionsRef
+    	connectionsRef.on("value", function(snapshot){
+		// initializing local var to # of children aka how many users are on website
+		var qty = snapshot.numChildren();
+		console.log(qty); //for FTP only
+		
+		// listening for added users and taking a snapshot
+		connectionsRef.on("child_added", function(childSnapshot) {
+			// initializing local var for each user
+			var sv = childSnapshot.val();
+			console.log(sv.user);//it works!!
+
+			// if else statement to print each user to approp box
+			if(qty === 1){ // if user is 1st, print to box one
+				$("#user1-display").text(sv.user);
+			}else if (qty === 2){ // if user is 2nd, print to box two
+				$("#user2-display").text(sv.user);
+			}else if (qty >=3){ // any user afterwards has to wait
+				alert("Game is full");
+			}
+		});
+	});	
+});	
+
